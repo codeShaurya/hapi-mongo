@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 
-import NotFound from './component/NotFound';
 import AppLayout from './container/AppLayout/index';
 import LandingPage from './container/Home/LandingPage';
+import Developers from './container/Developer/Developers';
+import Developer from './container/Developer/Developer';
+import Create from './container/Developer/Create';
+import NotFound from './component/NotFound';
 
 class AppRoutes extends Component {
   render() {
@@ -13,9 +16,24 @@ class AppRoutes extends Component {
             <AppLayout>
                 <Switch>
                     <Route
+                        exact
+                        path={"/"}
+                        component={LandingPage}
+                    />
+                    <Route
                     exact
-                    path = {"/"}
-                    component = {LandingPage} 
+                    path = {"/create"}
+                    component = {Create} 
+                    />
+                    <Route
+                        exact
+                        path={"/developers"}
+                        component={Developers}
+                    />
+                    <Route
+                        exact
+                        path={"/developer/:id"}
+                        component={Developer}
                     />
                     <Route component = {NotFound} />
                 </Switch>
