@@ -3,14 +3,13 @@ const Hapi = require('hapi');
 const routes = require('./routes');
 
 const server = Hapi.server({
-  host: 'localhost',
-  port: 3001
+  host: '127.0.0.1',
+  port: 3001,
 });
 
 server.route(routes);
 
 async function start() {
-
   try {
     await server.start();
   }

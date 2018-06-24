@@ -1982,8 +1982,8 @@ cross-spawn@5.1.0, cross-spawn@^5.0.1, cross-spawn@^5.1.0:
     which "^1.2.9"
 
 cryptiles@4.x.x:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-4.1.1.tgz#169256b9df9fe3c73f8085c99e30b32247d4ab46"
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/cryptiles/-/cryptiles-4.1.2.tgz#363c9ab5c859da9d2d6fb901b64d980966181184"
   dependencies:
     boom "7.x.x"
 
@@ -2536,7 +2536,7 @@ es6-map@^0.1.3:
     es6-symbol "~3.1.1"
     event-emitter "~0.3.5"
 
-es6-promise@^4.0.5:
+es6-promise@^4.0.5, es6-promise@^4.2.4:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.4.tgz#dc4221c2b16518760bd8c39a52d8f356fc00ed29"
 
@@ -3385,9 +3385,9 @@ handlebars@^4.0.3:
   optionalDependencies:
     uglify-js "^2.6"
 
-hapi@17.5.1:
-  version "17.5.1"
-  resolved "https://registry.yarnpkg.com/hapi/-/hapi-17.5.1.tgz#0e6ca5d3d908c4c96203221c9c246e23fce4b49b"
+hapi@17.5.2:
+  version "17.5.2"
+  resolved "https://registry.yarnpkg.com/hapi/-/hapi-17.5.2.tgz#9c5823cdcdd17e5621ebc8928aefb144d033caac"
   dependencies:
     accept "3.x.x"
     ammo "3.x.x"
@@ -4110,7 +4110,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
-isomorphic-fetch@2.2.1, isomorphic-fetch@^2.1.1:
+isomorphic-fetch@2.2.1, isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:

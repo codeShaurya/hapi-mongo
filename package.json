@@ -7,8 +7,10 @@
     "@material-ui/icons": "1.1.0",
     "classnames": "2.2.5",
     "dotenv": "6.0.0",
+    "es6-promise": "^4.2.4",
     "firebase": "5.0.4",
-    "hapi": "17.5.1",
+    "hapi": "17.5.2",
+    "isomorphic-fetch": "^2.2.1",
     "mongodb": "3.0.10",
     "mongoose": "5.1.5",
     "nodemon": "1.17.5",
@@ -19,10 +21,9 @@
     "react-router-dom": "4.2.2",
     "react-scripts": "1.1.4"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
     "setup": "cp -f src/setup.js node_modules/react-scripts/config/paths.js",
-    "dev:db": "node src/lib/database/index.js",
-    "dev:server": "nodemon src/server/index.js",
     "dev": "nodemon src/server/index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -6,7 +6,7 @@ import LandingPage from './container/Home/LandingPage';
 import Developers from './container/Developer/Developers';
 import Developer from './container/Developer/Developer';
 import Create from './container/Developer/Create';
-import NotFound from './component/NotFound';
+import NotFound from './components/NotFound';
 
 class AppRoutes extends Component {
   render() {
@@ -32,7 +32,7 @@ class AppRoutes extends Component {
                     />
                     <Route
                         exact
-                        path={"/developer/:id"}
+                        path={"/developers/:username"}
                         component={Developer}
                     />
                     <Route component = {NotFound} />

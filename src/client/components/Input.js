@@ -6,18 +6,16 @@ import { Typography } from "@material-ui/core";
 
 
 const styles = (theme) => ({
-  main: {
-    // backgroundColor: "red",
+  root: {
+    display:"flex",
   },
   text: {
     textAlign: "center",
-    margin: "30px",
-    fontSize: "100px"
+    margin: "10px",
   },
-  subtext: {
-    textAlign: "center",
-    fontSize: "50px"
-  }
+  input: {
+    width:"100%",
+  },
 });
 
 class Input extends Component {
@@ -25,16 +23,18 @@ class Input extends Component {
     const { classes,onChange, value, placeholder, title } = this.props;
 
     return (
-      <div className={classes.main}>
-      <Typography variant="title">
-      {title}
-      </Typography>
+      <div className={classes.root}>
+        <Typography variant="title" classes={{root:classes.text}}>
+          {title}
+        </Typography>
         <input
+          className={classes.input}
           value={value}
           placeholder={placeholder ||"Input"}
           onChange={onChange}
         />
-      </div>)
+      </div>
+    );
   }
 }
 
