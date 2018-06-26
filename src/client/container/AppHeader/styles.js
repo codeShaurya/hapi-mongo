@@ -9,6 +9,10 @@ const styles = (theme) => ({
       marginLeft: -12,
       marginRight: 20,
     },
+    link: {
+      textDecoration: "none",
+      color:"white",
+    }
 });
 
 export default styles;

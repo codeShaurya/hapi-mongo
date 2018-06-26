@@ -24,6 +24,13 @@ module.exports = [
     path: '/api/create',
     handler: async (request, h) => {
       const {email, name, username} = request.payload;
+      
+      const isDeveloper = await Developer.find({username: username});
+      
+      if(isDeveloper.length !== 0){
+        return h.response({message:"username should be unique",statusCode:400}).code(400);
+      }
+      
       const newDeveloper = new Developer({
         name,
         email,
@@ -32,7 +39,6 @@ module.exports = [
 
       const res = await newDeveloper.save();
       return h.response(res).code(201);
-
     }
   },
   {

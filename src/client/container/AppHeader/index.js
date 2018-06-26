@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import Link from 'react-router-dom/Link';
+
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,9 +25,11 @@ class AppHeader extends Component {
                         <IconButton className={classes.menuButton} color="inherit" onClick={openDrawer} aria-label="Menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="title" color="inherit" className={classes.flex}>
-                        Title
-                    </Typography>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            <Link to="/" className={classes.link}>
+                               Developer Console
+                            </Link>
+                        </Typography>
                     <Button color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
