@@ -1,13 +1,15 @@
 
 const Hapi = require('hapi');
-const routes = require('./routes');
+require('./database').db;
+
+const postDeveloper = require('./routes/postDeveloper');
 
 const server = Hapi.server({
   host: '127.0.0.1',
   port: 3001,
 });
 
-server.route(routes);
+server.route(postDeveloper);
 
 async function start() {
   try {
