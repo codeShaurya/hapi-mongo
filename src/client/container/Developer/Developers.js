@@ -31,7 +31,7 @@ class Developers extends Component {
       })
         .then(e => e.json())
         .then(e => {
-          this.setState({developers:e});
+          this.setState({developers:e.res});
         })
         .catch(e => console.log(e));
 

@@ -3,6 +3,8 @@ const Hapi = require('hapi');
 require('./database').db;
 
 const postDeveloper = require('./routes/postDeveloper');
+const getDeveloper = require('./routes/getDeveloper');
+const getDevelopers = require('./routes/getDevelopers');
 
 const server = Hapi.server({
   host: '127.0.0.1',
@@ -10,6 +12,8 @@ const server = Hapi.server({
 });
 
 server.route(postDeveloper);
+server.route(getDeveloper);
+server.route(getDevelopers);
 
 async function start() {
   try {

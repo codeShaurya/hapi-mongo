@@ -52,7 +52,7 @@ class Developer extends Component {
   componentWillMount = async () => {
     try {
       const username = this.props.match.params.username;
-      const url = `/api/developer/${username}`;
+      const url = `/api/developers/${username}`;
 
       //async await
      /*  const res = await fetch(url, {
