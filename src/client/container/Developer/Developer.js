@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
+
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -18,8 +19,10 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Loading from '../../components/Loading';
 
 const styles = theme => ({
+  root: {
+    marginTop: "80px",
+  },
   card: {
-    maxWidth: 400,
   },
   media: {
     height: 0,
@@ -75,7 +78,7 @@ class Developer extends Component {
       })
         .then(e => e.json())
         .then(e => {
-          this.setState({developer:e});
+          this.setState({developer: e.res});
         })
         .catch(e => console.log(e));
 
@@ -94,41 +97,45 @@ class Developer extends Component {
     }
 
     return (
-      <div>
-        <Card className={classes.card}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
-                S
-              </Avatar>
-            }
-            action={
-              <IconButton>
-                <MoreVertIcon />
-              </IconButton>
-            }
-            title={developer[0]["name"]}
-            subheader={developer[0]["username"]}
-          />
-          <CardMedia
-            className={classes.media}
-            image="/static/images/cards/paella.jpg"
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography component="p">
-              {developer[0]["email"]}
-            </Typography>
-          </CardContent>
-          <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="Share">
-              <ShareIcon />
-            </IconButton>
-          </CardActions>
-        </Card>
+      <div className={classes.root}>
+        <Grid container justify="center" spacing={0}>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="Recipe" className={classes.avatar}>
+                    {developer[0]["name"][0]}
+                  </Avatar>
+                }
+                action={
+                  <IconButton>
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title={developer[0]["name"]}
+                subheader={developer[0]["username"]}
+              />
+              <CardMedia
+                className={classes.media}
+                image={developer[0]["avatar"]}
+                title={developer[0]["name"]}
+              />
+              <CardContent>
+                <Typography component="p">
+                  {developer[0]["email"]}
+                </Typography>
+              </CardContent>
+              <CardActions className={classes.actions} disableActionSpacing>
+                <IconButton aria-label="Add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="Share">
+                  <ShareIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
       </div>
     );
   }

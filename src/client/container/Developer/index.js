@@ -11,10 +11,7 @@ const styles = theme => ({
   card: {
     display: 'flex',
   },
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
+  details: {},
   content: {
     flex: '1 0 auto',
   },
@@ -23,8 +20,6 @@ const styles = theme => ({
     height: 151,
   },
   controls: {
-    display: 'flex',
-    alignItems: 'center',
     paddingLeft: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
   },
@@ -38,26 +33,29 @@ class Developer extends Component {
   }
 
   render(){
-    const { classes, theme, developer } = this.props;
+    const { classes, developer } = this.props;
+
+    const {name, avatar, username} = developer;
 
     return (
       <div>
         <Card className={classes.card}>
           <div className={classes.details}>
             <CardContent className={classes.content}>
-              <Typography variant="headline">{developer.name}</Typography>
+              <Typography variant="headline">{name}</Typography>
               <Typography variant="subheading" color="textSecondary">
-                @{developer.username}
+                @{username}
             </Typography>
             </CardContent>
             <div className={classes.controls}>
-              <Button variant="contained" color="primary" onClick={e => this.viewProfile(e, developer.username)}>{"View Profile"}</Button>
+              <Button variant="contained" color="primary" onClick={e => this.viewProfile(e, username)}>{"View Profile"}</Button>
             </div>
           </div>
+          <div className={classes.content}/>
           <CardMedia
             className={classes.cover}
-            image={"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/220px-Cat03.jpg"}
-            title={developer.name}
+            image={avatar}
+            title={name}
           />
         </Card>
       </div>

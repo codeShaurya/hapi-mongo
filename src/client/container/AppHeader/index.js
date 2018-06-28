@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Link from 'react-router-dom/Link';
-
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -20,17 +17,21 @@ class AppHeader extends Component {
         const { classes, openDrawer } = this.props;
         return (
             <div className={classes.root}>
-                <AppBar position="static">
+                <AppBar position="fixed">
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit" onClick={openDrawer} aria-label="Menu">
                         <MenuIcon />
                     </IconButton>
-                        <Typography variant="title" color="inherit" className={classes.flex}>
-                            <Link to="/" className={classes.link}>
-                               Developer Console
-                            </Link>
-                        </Typography>
-                    <Button color="inherit">Login</Button>
+                        <Typography
+                            variant="title"
+                            color="inherit"
+                            className={classes.flex}
+                            onClick={() => {
+                                window.location.href = '/';
+                            }}
+                        >
+                            Developers Console
+                         </Typography>
                     </Toolbar>
                 </AppBar>
             </div>

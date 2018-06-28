@@ -1,7 +1,15 @@
 import React, { Component } from "react";
+import { withStyles } from '@material-ui/core/styles';
+
 import Grid from '@material-ui/core/Grid';
 
 import Developer from './index';
+
+const styles = (theme) => ({
+  root: {
+    marginTop: "80px",
+  },
+});
 class Developers extends Component {
 
   state = {
@@ -43,17 +51,15 @@ class Developers extends Component {
 
 
   render() {
-
-    const {developers} = this.state;
-
-    console.log(developers);
+    const { classes } = this.props;
+    const { developers } = this.state;
 
     return (
-      <div>
-        <Grid container spacing={8}>
+      <div className={classes.root}>
+        <Grid container justify="center" spacing={8}>
         {
           developers.map((dev, i) => (
-            <Grid item xs={12} sm={12} md={6} lg={4} xl={4} key={i}>
+            <Grid item xs={12} sm={12} md={6} lg={3} xl={3} key={i}>
               <Developer developer={dev} />
             </Grid>
           ))
@@ -64,4 +70,4 @@ class Developers extends Component {
   }
 }
 
-export default Developers;
+export default withStyles(styles)(Developers);

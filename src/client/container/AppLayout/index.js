@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import { withStyles } from '@material-ui/core/styles';
 
 import AppHeader from '../AppHeader/index';
@@ -10,6 +11,14 @@ const styles = (theme) => ({});
 class AppLayout extends Component {
     state = {
         drawer: false,
+        isHeader: true,
+    }
+
+    componentWillMount = () => {
+        const { pathname } = this.props.location;
+        if( pathname === "/"){
+            this.setState({isHeader: false});
+        }
     }
     
     openDrawer = () => {
@@ -22,12 +31,15 @@ class AppLayout extends Component {
 
     render(){
         const { classes, children } = this.props;
-        const { drawer } = this.state;
-        console.log(drawer);
+        const { drawer, isHeader } = this.state;
 
         return (
             <div className={classes.root}>
-            <AppHeader openDrawer = {this.openDrawer} />
+            {
+                isHeader ? 
+                <AppHeader openDrawer = {this.openDrawer} /> :
+                 null
+            }
             <AppDrawer 
               open={drawer} 
               openDrawer={this.openDrawer} 
@@ -43,4 +55,4 @@ AppLayout.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AppLayout);
+export default withRouter(withStyles(styles)(AppLayout));

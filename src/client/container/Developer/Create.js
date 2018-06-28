@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
-import { Button } from "@material-ui/core";
+import { Button, CardActions } from "@material-ui/core";
 
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography'
@@ -21,7 +21,7 @@ import CloseIcon from '@material-ui/icons/Close'
 const styles = (theme) => ({
   root: {
     paddingBottom: "20px",
-    paddingTop: "10px",
+    marginTop: "70px",
   },
   card: {
     margin: "5px",
@@ -30,7 +30,6 @@ const styles = (theme) => ({
   },
   header: {
     textAlign: "center",
-    padding: '10px 10px 10px 10px',
     fontFamily: "'Amaranth', sans-serif",
   },
   flex: {
@@ -45,6 +44,9 @@ const styles = (theme) => ({
   margin: {
     margin: theme.spacing.unit,
     width: '100%',
+    [theme.breakpoints.down('md')]: {
+      margin: 0,
+    }
   },
   button: {
     boxShadow: "5px 5px 10px 1px",
@@ -56,14 +58,20 @@ const styles = (theme) => ({
   icon: {
     fontSize: "40px",
     marginRight: "20px",
+    [theme.breakpoints.down('md')]: {
+      fontSize: "20px",
+      marginRight: "10px",
+    }
   },
-  input: {
-    fontSize: '20px',
-    fontFamily: "'Amaranth', sans-serif",
-    width: "100%",
-    border: '2px solid #dadada',
-    borderRadius: '8px',
-    height: '130px',
+  fixed: {
+    borderRadius: 0,
+    position: "fixed",
+    bottom: "20px",
+    right: "20px", 
+    [theme.breakpoints.down('md')]: {
+      left: 0,
+      bottom: 0,
+    }
   },
   close: {
     width: theme.spacing.unit * 4,
@@ -142,8 +150,7 @@ class Create extends Component {
   render() {
 
     const { classes } = this.props;
-    const {name, email, username, github, open} = this.state;
-
+    const { open } = this.state;
 
     return (
       <div className={classes.root}>
@@ -166,7 +173,6 @@ class Create extends Component {
                 </Typography>
 
                   <FormGroup>
-                    <form noValidate autoComplete="false">
                       <div className={classes.flex}>
                         <PermIdentity className={classes.icon} />
                         <TextField
@@ -202,25 +208,25 @@ class Create extends Component {
                         <TextField
                           className={classes.margin}
                           required
-                          label="Github"
+                          label="Github Handle"
                           onChange={e => this.handleChange(e, 'github')}
                           id="mui-theme-provider-input"
                         />
                       </div>
-                      <br />
-                      <div className={classes.alignbutton} />
-                      <Button variant="raised" color="primary" onClick={this.onSubmit} >
-                        Submit
-                      </Button>
-                    </form>
                   </FormGroup>
               </CardContent>
-              <Button variant="raised" color="primary" onClick={e => this.onClick1(e)} >
-                View Developers
-              </Button>
+              <CardActions>
+                <div className={classes.alignbutton} />
+                <Button variant="raised" color="primary" onClick={this.onSubmit} >
+                  Submit
+                </Button>
+              </CardActions>
             </Card>
           </Grid>
         </Grid>
+        <Button variant="raised" className={classes.fixed} color="primary" onClick={e => this.onClick1(e)} >
+          View Developers
+        </Button>
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
