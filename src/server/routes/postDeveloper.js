@@ -1,4 +1,5 @@
 
+const Boom = require('boom');
 const Developer = require('../schema').Developer;
 
 const { verifyUniqueDeveloper } = require('../queries/uniqueDeveloper');
@@ -14,19 +15,25 @@ module.exports = {
       { method: getProfileImage, assign: "githubImage" }
     ],
     handler: async (request, h) => {
-      const { email, name, username, github } = request.payload;
-      const avatar = request.pre.githubImage;
+      try{
+        const { email, name, username, github } = request.payload;
+        const avatar = request.pre.githubImage;
+  
+        const newDeveloper = new Developer({
+          name,
+          email,
+          username,
+          github,
+          avatar,
+        });
+  
+        const res = await newDeveloper.save();
 
-      const newDeveloper = new Developer({
-        name,
-        email,
-        username,
-        github,
-        avatar,
-      });
-
-      const res = await newDeveloper.save();
-      return h.response(res).code(201);
+        return h.response(res).code(201);
+      } catch(e){
+        console.error(e);
+        return Boom.badRequest('Some Error occured');
+      }
     },
     validate: {
       payload: payloadValidator

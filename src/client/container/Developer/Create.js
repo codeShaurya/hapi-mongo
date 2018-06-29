@@ -77,6 +77,9 @@ const styles = (theme) => ({
     width: theme.spacing.unit * 4,
     height: theme.spacing.unit * 4,
   },
+  message: {
+    color: "red",
+  }
 });
 
 class Create extends Component {
@@ -86,6 +89,7 @@ class Create extends Component {
     email: "",
     username: "",
     github: "",
+    message: "",
   }
 
   handleChange = (e, name) => {
@@ -96,6 +100,8 @@ class Create extends Component {
     try {
       const url = `/api/create`;
       const { name, email, username, github } = this.state;
+
+      this.setState({message: ''});
       /* 
       const res = await fetch(url, {
         method: 'POST',
@@ -121,12 +127,22 @@ class Create extends Component {
       })
         .then(e => e.json())
         .then(e => {
-          const {statusCode} = e;
-          if(statusCode !== 400){
-            this.setState({ open: true });
+          const {statusCode, error, message} = e;
+          console.log(e);
+          if(statusCode ===  400){
+            this.setState({message:"Invalid Input by user. Please check your entered details"});
+          }
+
+          if (statusCode === 404) {
+            this.setState({ message });
+          }
+
+          if(typeof statusCode === "undefined"){
+            console.log(e);
+            this.setState({ open: true, message });
           }
         })
-        .catch(e => console.log(e));
+        .catch(e => console.error(e));
 
     } catch (e) {
       console.error(e);
@@ -150,7 +166,7 @@ class Create extends Component {
   render() {
 
     const { classes } = this.props;
-    const { open } = this.state;
+    const { open, message } = this.state;
 
     return (
       <div className={classes.root}>
@@ -214,6 +230,9 @@ class Create extends Component {
                         />
                       </div>
                   </FormGroup>
+                  <div className={classes.message}>
+                    {message ? message : null}
+                  </div>
               </CardContent>
               <CardActions>
                 <div className={classes.alignbutton} />
