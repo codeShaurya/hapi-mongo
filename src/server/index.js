@@ -5,15 +5,17 @@ require('./database').db;
 const postDeveloper = require('./routes/postDeveloper');
 const getDeveloper = require('./routes/getDeveloper');
 const getDevelopers = require('./routes/getDevelopers');
+const authentication = require('./routes/authentication');
 
 const server = Hapi.server({
-  host: '127.0.0.1',
-  port: 3001,
+  host: 'localhost',
+  port: 3002,
 });
 
 server.route(postDeveloper);
 server.route(getDeveloper);
 server.route(getDevelopers);
+server.route(authentication);
 
 async function start() {
   try {

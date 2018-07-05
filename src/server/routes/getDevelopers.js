@@ -11,7 +11,6 @@ module.exports = {
 
       const res = await Developer.find({});
 
-      console.log(res.length);
       if (res.length === 0) {
         return Boom.notFound('There is no developer').code(404);
       }

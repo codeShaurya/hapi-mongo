@@ -21,7 +21,6 @@
     "react-router-dom": "4.2.2",
     "react-scripts": "1.1.4"
   },
-  "proxy": "http://localhost:3001",
   "scripts": {
     "setup": "cp -f src/setup.js node_modules/react-scripts/config/paths.js",
     "dev": "nodemon src/server/index.js",
